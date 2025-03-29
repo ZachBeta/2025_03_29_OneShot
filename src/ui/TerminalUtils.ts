@@ -64,7 +64,30 @@ export function drawVerticalLine(height: number, char = '│'): string[] {
  * @param height - The height of the box
  * @returns An array of strings representing each line of the box
  */
-export function drawBox(width: number, height: number): string[] {
+export function drawBox(width: number, height: number): string[];
+/**
+ * Draws a box directly into a buffer at the specified position
+ * @param buffer - The buffer to draw the box into
+ * @param x1 - The x coordinate of the top-left corner
+ * @param y1 - The y coordinate of the top-left corner
+ * @param x2 - The x coordinate of the bottom-right corner
+ * @param y2 - The y coordinate of the bottom-right corner
+ */
+export function drawBox(
+  buffer: string[][],
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number
+): void;
+// Implementation
+export function drawBox(
+  arg1: number | string[][],
+  arg2: number,
+  arg3?: number,
+  arg4?: number,
+  arg5?: number
+): string[] | void {
   // Box characters
   const topLeft = '┌';
   const topRight = '┐';
@@ -73,20 +96,53 @@ export function drawBox(width: number, height: number): string[] {
   const horizontal = '─';
   const vertical = '│';
   
-  const result: string[] = [];
-  
-  // Top border
-  result.push(topLeft + horizontal.repeat(width - 2) + topRight);
-  
-  // Middle rows
-  for (let i = 0; i < height - 2; i++) {
-    result.push(vertical + ' '.repeat(width - 2) + vertical);
+  // Check which overload was called
+  if (typeof arg1 === 'number') {
+    // First overload: width, height
+    const width = arg1;
+    const height = arg2;
+    const result: string[] = [];
+    
+    // Top border
+    result.push(topLeft + horizontal.repeat(width - 2) + topRight);
+    
+    // Middle rows
+    for (let i = 0; i < height - 2; i++) {
+      result.push(vertical + ' '.repeat(width - 2) + vertical);
+    }
+    
+    // Bottom border
+    result.push(bottomLeft + horizontal.repeat(width - 2) + bottomRight);
+    
+    return result;
+  } else {
+    // Second overload: buffer, x1, y1, x2, y2
+    const buffer = arg1;
+    const x1 = arg2;
+    const y1 = arg3!;
+    const x2 = arg4!;
+    const y2 = arg5!;
+    
+    // Draw top border
+    buffer[y1][x1] = topLeft;
+    for (let x = x1 + 1; x < x2; x++) {
+      buffer[y1][x] = horizontal;
+    }
+    buffer[y1][x2] = topRight;
+    
+    // Draw vertical borders
+    for (let y = y1 + 1; y < y2; y++) {
+      buffer[y][x1] = vertical;
+      buffer[y][x2] = vertical;
+    }
+    
+    // Draw bottom border
+    buffer[y2][x1] = bottomLeft;
+    for (let x = x1 + 1; x < x2; x++) {
+      buffer[y2][x] = horizontal;
+    }
+    buffer[y2][x2] = bottomRight;
   }
-  
-  // Bottom border
-  result.push(bottomLeft + horizontal.repeat(width - 2) + bottomRight);
-  
-  return result;
 }
 
 /**
@@ -233,7 +289,7 @@ export function renderTitleScreen(): void {
   }
   
   // Wait for key press
-  terminal.once('key', (key: string) => {
+  terminal.once('key', (_key: string) => {
     // Return on any key press - this will be handled by the caller
     return;
   });

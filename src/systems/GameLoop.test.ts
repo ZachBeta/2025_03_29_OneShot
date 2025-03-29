@@ -136,7 +136,19 @@ describe('GameLoop System', () => {
   // Test help functionality
   test('handles HELP action by displaying the help system', async () => {
     // Access the private methods for testing
-    const gameLoopInstance = gameLoop as any;
+    const gameLoopInstance = gameLoop as unknown as {
+      inputHandler: { 
+        getInput: jest.Mock;
+        setGameState: jest.Mock;
+      };
+      helpSystem: { 
+        showHelp: jest.Mock;
+      };
+      gameBoard: { 
+        refreshDisplay: jest.Mock;
+      };
+      processRunnerTurn: () => Promise<void>;
+    };
     
     // Mock getUserAction to return a HELP action
     const mockInputHandler = gameLoopInstance.inputHandler;

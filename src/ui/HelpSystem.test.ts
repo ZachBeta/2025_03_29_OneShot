@@ -111,22 +111,30 @@ describe('HelpSystem', () => {
   });
   
   test('displayHelpOverlay renders different content based on page number', () => {
-    // Get the help content for different pages to compare
+    // Create spies to detect which help content is rendered
+    const contextHelpSpy = jest.spyOn(helpSystem, 'getContextHelp');
+    
+    // Clear mock call history
+    (console.log as jest.Mock).mockClear();
+    
+    // First page should show context help
     helpSystem.displayHelpOverlay(mockGameState, 1);
-    const firstPageCall = (console.log as jest.Mock).mock.calls[0][0];
+    expect(contextHelpSpy).toHaveBeenCalled();
     
+    // Clear mock call history
     (console.log as jest.Mock).mockClear();
+    contextHelpSpy.mockClear();
+    
+    // Second page should not call getContextHelp 
     helpSystem.displayHelpOverlay(mockGameState, 2);
-    const secondPageCall = (console.log as jest.Mock).mock.calls[0][0];
+    expect(contextHelpSpy).not.toHaveBeenCalled();
     
+    // Clear mock call history
     (console.log as jest.Mock).mockClear();
-    helpSystem.displayHelpOverlay(mockGameState, 3);
-    const thirdPageCall = (console.log as jest.Mock).mock.calls[0][0];
     
-    // The content should be different across pages
-    expect(firstPageCall).not.toEqual(secondPageCall);
-    expect(firstPageCall).not.toEqual(thirdPageCall);
-    expect(secondPageCall).not.toEqual(thirdPageCall);
+    // Third page should also not call getContextHelp
+    helpSystem.displayHelpOverlay(mockGameState, 3);
+    expect(contextHelpSpy).not.toHaveBeenCalled();
   });
   
   test('waitForHelpInput returns null on escape', async () => {

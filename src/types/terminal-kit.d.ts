@@ -3,7 +3,7 @@
  */
 
 declare module 'terminal-kit' {
-  export const terminal: {
+  export interface Terminal {
     // Basic terminal operations
     clear: () => void;
     moveTo: (x: number, y: number) => void;
@@ -21,13 +21,15 @@ declare module 'terminal-kit' {
     
     // Event handling
     once: (event: string, callback: (key: string) => void) => void;
-    
-    // Additional methods that might be used later
     on: (event: string, callback: (key: string) => void) => void;
+    
+    // Additional methods
     grabInput: (options?: boolean | { mouse?: string }) => void;
     hideCursor: () => void;
     showCursor: () => void;
     bold: () => void;
     reset: () => void;
-  };
+  }
+  
+  export const terminal: Terminal;
 } 

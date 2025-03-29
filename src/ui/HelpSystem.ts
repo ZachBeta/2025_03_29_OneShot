@@ -3,9 +3,9 @@
  * Integrates with the game to provide help based on the current state
  */
 
-import { PhaseType, PlayerType } from '../models/types';
+import { PhaseType } from '../models/types';
 import { GameState } from '../models/GameState';
-import { drawBox, cyberpunkStyle, createScreenBuffer, renderToBuffer, renderBufferToTerminal, clearScreen } from './TerminalUtils';
+import { drawBox, cyberpunkStyle, createScreenBuffer, renderToBuffer, clearScreen } from './TerminalUtils';
 
 export class HelpSystem {
   private static readonly HELP_WIDTH = 76;
@@ -155,28 +155,28 @@ export class HelpSystem {
     // Render title art
     for (let i = 0; i < HelpSystem.TITLE_ART.length; i++) {
       const startX = Math.floor((HelpSystem.HELP_WIDTH - HelpSystem.TITLE_ART[i].length) / 2);
-      renderToBuffer(buffer, startX, 1 + i, HelpSystem.TITLE_ART[i]);
+      renderToBuffer(buffer, [HelpSystem.TITLE_ART[i]], startX, 1 + i);
     }
     
     // Render help title
     const titleText = cyberpunkStyle(helpContent.title);
     const titleX = Math.floor((HelpSystem.HELP_WIDTH - helpContent.title.length) / 2);
-    renderToBuffer(buffer, titleX, 8, titleText);
+    renderToBuffer(buffer, [titleText], titleX, 8);
     
     // Render page indicator
     const pageText = `Page ${pageNumber}/3`;
     const pageX = HelpSystem.HELP_WIDTH - pageText.length - 2;
-    renderToBuffer(buffer, pageX, 8, pageText);
+    renderToBuffer(buffer, [pageText], pageX, 8);
     
     // Render content lines
     for (let i = 0; i < helpContent.content.length; i++) {
-      renderToBuffer(buffer, 4, 10 + i, helpContent.content[i]);
+      renderToBuffer(buffer, [helpContent.content[i]], 4, 10 + i);
     }
     
     // Render navigation instructions
     const navText = "Press [1-3] to change pages, [ESC] to return to game";
     const navX = Math.floor((HelpSystem.HELP_WIDTH - navText.length) / 2);
-    renderToBuffer(buffer, navX, HelpSystem.HELP_HEIGHT - 2, navText);
+    renderToBuffer(buffer, [navText], navX, HelpSystem.HELP_HEIGHT - 2);
     
     // Draw a box around everything
     drawBox(buffer, 0, 0, HelpSystem.HELP_WIDTH - 1, HelpSystem.HELP_HEIGHT - 1);
