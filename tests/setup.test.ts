@@ -2,7 +2,7 @@
  * Basic test to verify Jest configuration
  */
 
-import main from '../src/index';
+import { main } from '../src/index';
 
 describe('Project Setup', () => {
   test('main function exists', () => {

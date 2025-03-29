@@ -316,42 +316,42 @@
 ## Phase 9: Game Loop Integration
 
 ### Main Game Loop
-- [ ] Implement GameLoop class (src/systems/GameLoop.ts)
-  - [ ] Core loop as per spec
-  - [ ] Title screen display
-  - [ ] Game state initialization
-  - [ ] Turn processing
-  - [ ] Game over screen
-- [ ] Create turn processing methods
-  - [ ] Runner turn handling with user input
-  - [ ] Corp turn automation with AI
-  - [ ] Win/loss condition checking
-- [ ] Add error handling and logging
-- [ ] Write tests for GameLoop
-  - [ ] Test game progression
-  - [ ] Test input processing
-  - [ ] Test Corp automation
-  - [ ] Test game ending conditions
+- [x] Implement GameLoop class (src/systems/GameLoop.ts)
+  - [x] Core loop as per spec
+  - [x] Title screen display
+  - [x] Game state initialization
+  - [x] Turn processing
+  - [x] Game over screen
+- [x] Create turn processing methods
+  - [x] Runner turn handling with user input
+  - [x] Corp turn automation with AI
+  - [x] Win/loss condition checking
+- [x] Add error handling and logging
+- [x] Write tests for GameLoop
+  - [x] Test game progression
+  - [x] Test input processing
+  - [x] Test Corp automation
+  - [x] Test game ending conditions
 
 ### Main Application
-- [ ] Update main application entry point (src/index.ts)
-  - [ ] Create async main function
-  - [ ] Component initialization
-  - [ ] GameLoop instantiation
-  - [ ] Game loop starting
-  - [ ] Graceful exit handling
-- [ ] Add error handling
-  - [ ] Unexpected error catching
-  - [ ] Terminal state cleanup
-  - [ ] User-friendly error messages
-- [ ] Add command line argument processing
-  - [ ] Debug mode flag
-  - [ ] Help text option
-  - [ ] Version display
-- [ ] Write tests for main application
-  - [ ] Test initialization
-  - [ ] Test error handling
-  - [ ] Test command line argument processing
+- [x] Update main application entry point (src/index.ts)
+  - [x] Create async main function
+  - [x] Component initialization
+  - [x] GameLoop instantiation
+  - [x] Game loop starting
+  - [x] Graceful exit handling
+- [x] Add error handling
+  - [x] Unexpected error catching
+  - [x] Terminal state cleanup
+  - [x] User-friendly error messages
+- [x] Add command line argument processing
+  - [x] Debug mode flag
+  - [x] Help text option
+  - [x] Version display
+- [x] Write tests for main application
+  - [x] Test initialization
+  - [x] Test error handling
+  - [x] Test command line argument processing
 
 ## Phase 10: Final Polish
 
