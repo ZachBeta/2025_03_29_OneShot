@@ -3,45 +3,45 @@
 ## Phase 1: Project Setup & Core Models
 
 ### Project Initialization
-- [ ] Create package.json with appropriate dependencies
-  - [ ] TypeScript
-  - [ ] Node.js types
-  - [ ] Jest for testing
-  - [ ] Terminal handling library (e.g., chalk, terminal-kit)
-- [ ] Configure tsconfig.json with strict type checking
-- [ ] Set up Jest configuration
-- [ ] Create basic directory structure
-  - [ ] src/
-  - [ ] src/models/
-  - [ ] src/systems/
-  - [ ] src/ui/
-  - [ ] src/utils/
-  - [ ] tests/
-- [ ] Create initial src/index.ts entry point
-- [ ] Write basic test to verify environment setup
-- [ ] Add README.md with project description
-- [ ] Configure linting (ESLint)
-- [ ] Set up Git repository with .gitignore
+- [x] Create package.json with appropriate dependencies
+  - [x] TypeScript
+  - [x] Node.js types
+  - [x] Jest for testing
+  - [x] Terminal handling library (e.g., chalk, terminal-kit)
+- [x] Configure tsconfig.json with strict type checking
+- [x] Set up Jest configuration
+- [x] Create basic directory structure
+  - [x] src/
+  - [x] src/models/
+  - [x] src/systems/
+  - [x] src/ui/
+  - [x] src/utils/
+  - [x] tests/
+- [x] Create initial src/index.ts entry point
+- [x] Write basic test to verify environment setup
+- [x] Add README.md with project description
+- [x] Configure linting (ESLint)
+- [x] Set up Git repository with .gitignore
 
 ### Core Data Models
-- [ ] Implement Card interface (src/models/Card.ts)
-  - [ ] Properties: id, name, type, cost, power, toughness, ascii, flavorText
-  - [ ] Type guards for different card types
-  - [ ] Unit tests for Card interface
-- [ ] Implement GameState interface (src/models/GameState.ts)
-  - [ ] Game progression properties
-  - [ ] Runner state properties
-  - [ ] Corp state properties
-  - [ ] Event log properties
-  - [ ] Unit tests for GameState interface
-- [ ] Implement LogEntry interface (src/models/LogEntry.ts)
-  - [ ] Properties: timestamp, message, type
-  - [ ] Unit tests for LogEntry interface
-- [ ] Create shared types file for common enums and types
-  - [ ] PlayerType enum (RUNNER, CORP)
-  - [ ] PhaseType enum (DRAW, NPU, MAIN, COMBAT)
-  - [ ] CardType enum (NPU, PROGRAM, ICE)
-  - [ ] EventType enum (GAME, COMBAT, CARD, PHASE)
+- [x] Implement Card interface (src/models/Card.ts)
+  - [x] Properties: id, name, type, cost, power, toughness, ascii, flavorText
+  - [x] Type guards for different card types
+  - [x] Unit tests for Card interface
+- [x] Implement GameState interface (src/models/GameState.ts)
+  - [x] Game progression properties
+  - [x] Runner state properties
+  - [x] Corp state properties
+  - [x] Event log properties
+  - [x] Unit tests for GameState interface
+- [x] Implement LogEntry interface (src/models/LogEntry.ts)
+  - [x] Properties: timestamp, message, type
+  - [x] Unit tests for LogEntry interface
+- [x] Create shared types file for common enums and types
+  - [x] PlayerType enum (RUNNER, CORP)
+  - [x] PhaseType enum (DRAW, NPU, MAIN, COMBAT)
+  - [x] CardType enum (NPU, PROGRAM, ICE)
+  - [x] EventType enum (GAME, COMBAT, CARD, PHASE)
 
 ## Phase 2: Game State Management
 
