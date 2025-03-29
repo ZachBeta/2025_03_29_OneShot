@@ -1,12 +1,27 @@
 // Import types first to avoid initialization issues
 import { GameLoop } from './GameLoop';
+import { ActionType } from '../models/UserAction';
 
 // Mock the InputHandler to prevent TTY handles from being opened
 jest.mock('./InputHandler', () => {
   return {
     InputHandler: jest.fn().mockImplementation(() => ({
       getKeypress: jest.fn().mockResolvedValue({ key: 'q' }),
-      cleanup: jest.fn()
+      cleanup: jest.fn(),
+      getInput: jest.fn().mockResolvedValue({ type: ActionType.END_PHASE }), // Default mock response
+      setGameState: jest.fn()
+    }))
+  };
+});
+
+// Mock the HelpSystem
+jest.mock('../ui/HelpSystem', () => {
+  return {
+    HelpSystem: jest.fn().mockImplementation(() => ({
+      getContextHelp: jest.fn(),
+      displayHelpOverlay: jest.fn(),
+      waitForHelpInput: jest.fn(),
+      showHelp: jest.fn().mockResolvedValue(undefined)
     }))
   };
 });
@@ -116,5 +131,27 @@ describe('GameLoop System', () => {
     gameLoop.requestExit();
     
     // No assertions needed - this just verifies the method can be called
+  });
+  
+  // Test help functionality
+  test('handles HELP action by displaying the help system', async () => {
+    // Access the private methods for testing
+    const gameLoopInstance = gameLoop as any;
+    
+    // Mock getUserAction to return a HELP action
+    const mockInputHandler = gameLoopInstance.inputHandler;
+    mockInputHandler.getInput.mockResolvedValueOnce({ type: ActionType.HELP });
+    
+    // Mock the HelpSystem's showHelp method
+    const mockHelpSystem = gameLoopInstance.helpSystem;
+    
+    // Call the processRunnerTurn method
+    await gameLoopInstance.processRunnerTurn();
+    
+    // Verify the HelpSystem was used
+    expect(mockHelpSystem.showHelp).toHaveBeenCalled();
+    
+    // Verify the display was refreshed after help
+    expect(gameLoopInstance.gameBoard.refreshDisplay).toHaveBeenCalled();
   });
 }); 

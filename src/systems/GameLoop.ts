@@ -7,6 +7,7 @@ import { TurnManager } from './TurnManager';
 import { CorpAI } from './CorpAI';
 import { InteractiveGameBoard } from '../ui/InteractiveGameBoard';
 import { EventLogRenderer } from '../ui/EventLogRenderer';
+import { HelpSystem } from '../ui/HelpSystem';
 import { PlayerType, PhaseType, UserAction as LegacyUserAction } from '../models/types';
 import { UserAction, ActionType } from '../models/UserAction';
 import { CardType } from '../models/types';
@@ -20,6 +21,7 @@ export class GameLoop {
   private actionProcessor: ActionProcessor;
   private gameBoard: InteractiveGameBoard;
   private eventLogRenderer: EventLogRenderer;
+  private helpSystem: HelpSystem;
   private isRunning: boolean = false;
   private exitRequested: boolean = false;
   private currentState: GameState;
@@ -41,6 +43,7 @@ export class GameLoop {
     this.actionProcessor = new ActionProcessor(this.gameStateManager);
     this.gameBoard = new InteractiveGameBoard();
     this.eventLogRenderer = new EventLogRenderer();
+    this.helpSystem = new HelpSystem();
     // Initialize empty state
     this.currentState = {
       turn: 0,
@@ -197,13 +200,23 @@ export class GameLoop {
       const availableActions = this.getAvailableActions();
       this.showAvailableActions(availableActions);
       
-      // Get user input - simulated for now
-      const userAction = await this.simulateUserAction();
+      // Get user input
+      const userAction = await this.getUserAction();
       
       // Handle quit action immediately
       if (userAction?.type === ActionType.QUIT) {
         this.requestExit();
         return;
+      }
+      
+      // Handle help action
+      if (userAction?.type === ActionType.HELP) {
+        // Show help and wait for user to dismiss
+        await this.helpSystem.showHelp(this.currentState);
+        
+        // Refresh the display after help is dismissed
+        this.updateDisplay(this.currentState);
+        continue; // Skip the rest of the loop
       }
       
       // Process the action
@@ -479,16 +492,15 @@ export class GameLoop {
   }
   
   /**
-   * Simulate user input for testing purposes
+   * Get user input via the InputHandler
+   * @returns A UserAction based on user's keyboard input
    */
-  private async simulateUserAction(): Promise<UserAction> {
-    // For now, just return a default EndPhase action after a delay
-    await new Promise(resolve => setTimeout(resolve, GameLoop.USER_ACTION_DELAY));
+  private async getUserAction(): Promise<UserAction> {
+    // Set the current game state in the input handler
+    this.inputHandler.setGameState(this.currentState);
     
-    return {
-      type: ActionType.END_PHASE,
-      payload: null
-    };
+    // Get user input through the input handler
+    return this.inputHandler.getInput();
   }
   
   /**

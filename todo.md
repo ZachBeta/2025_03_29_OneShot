@@ -332,6 +332,9 @@
   - [x] Test input processing
   - [x] Test Corp automation
   - [x] Test game ending conditions
+- [x] Integrate with HelpSystem
+  - [x] Add help action handler in processRunnerTurn
+  - [x] Add test for help functionality
 
 ### Main Application
 - [x] Update main application entry point (src/index.ts)
@@ -356,22 +359,22 @@
 ## Phase 10: Final Polish
 
 ### Help System
-- [ ] Implement HelpSystem class (src/ui/HelpSystem.ts)
-  - [ ] Context-sensitive help methods
-  - [ ] Game rules explanation
-  - [ ] Phase-specific action help
-  - [ ] Card type explanations
-  - [ ] Keyboard control reference
-- [ ] Create modal help display
-  - [ ] Overlay for current game board
-  - [ ] Dismissal mechanism
-  - [ ] Multi-page navigation
-- [ ] Add ASCII art for help screens
-- [ ] Write tests for HelpSystem
-  - [ ] Test content accuracy
-  - [ ] Test modal display
-  - [ ] Test context sensitivity
-  - [ ] Test navigation
+- [x] Implement HelpSystem class (src/ui/HelpSystem.ts)
+  - [x] Context-sensitive help methods
+  - [x] Game rules explanation
+  - [x] Phase-specific action help
+  - [x] Card type explanations
+  - [x] Keyboard control reference
+- [x] Create modal help display
+  - [x] Overlay for current game board
+  - [x] Dismissal mechanism
+  - [x] Multi-page navigation
+- [x] Add ASCII art for help screens
+- [x] Write tests for HelpSystem
+  - [x] Test content accuracy
+  - [x] Test modal display
+  - [x] Test context sensitivity
+  - [x] Test navigation
 
 ### Saving and Loading
 - [ ] Implement SaveSystem class (src/systems/SaveSystem.ts)
