@@ -167,38 +167,38 @@
 ## Phase 5: Card Mechanics
 
 ### Program Mechanics
-- [ ] Implement ProgramMechanics module (src/systems/ProgramMechanics.ts)
-  - [ ] Function to install a program
-  - [ ] Function to calculate program effectiveness against ICE types
-  - [ ] Function to determine if a program can attack
-  - [ ] Function to calculate damage dealt by programs
-- [ ] Implement special rules for Fracter
-  - [ ] More effective against Barrier ICE
-  - [ ] Standard 1 power damage calculation
-- [ ] Include NPU cost validation
-- [ ] Write tests for ProgramMechanics
-  - [ ] Test installation requirements
-  - [ ] Test effectiveness calculations
-  - [ ] Test attack eligibility
-  - [ ] Test damage calculation
-  - [ ] Test Fracter's special effectiveness
+- [x] Implement ProgramMechanics module (src/systems/ProgramMechanics.ts)
+  - [x] Function to install a program
+  - [x] Function to calculate program effectiveness against ICE types
+  - [x] Function to determine if a program can attack
+  - [x] Function to calculate damage dealt by programs
+- [x] Implement special rules for Fracter
+  - [x] More effective against Barrier ICE
+  - [x] Standard 1 power damage calculation
+- [x] Include NPU cost validation
+- [x] Write tests for ProgramMechanics
+  - [x] Test installation requirements
+  - [x] Test effectiveness calculations
+  - [x] Test attack eligibility
+  - [x] Test damage calculation
+  - [x] Test Fracter's special effectiveness
 
 ### ICE Mechanics
-- [ ] Implement ICEMechanics module (src/systems/ICEMechanics.ts)
-  - [ ] Function to install ICE
-  - [ ] Function to determine which programs an ICE can block
-  - [ ] Function to calculate damage dealt to programs
-  - [ ] Framework for special ICE abilities
-- [ ] Implement specific rules for Barrier ICE
-  - [ ] Blocking behavior
-  - [ ] Damage taking based on attacker's power
-  - [ ] Damage dealing based on own power
-- [ ] Include Corp NPU cost validation
-- [ ] Write tests for ICEMechanics
-  - [ ] Test installation requirements
-  - [ ] Test blocking determinations
-  - [ ] Test damage calculations
-  - [ ] Test Barrier-specific behavior
+- [x] Implement ICEMechanics module (src/systems/ICEMechanics.ts)
+  - [x] Function to install ICE
+  - [x] Function to determine which programs an ICE can block
+  - [x] Function to calculate damage dealt to programs
+  - [x] Framework for special ICE abilities
+- [x] Implement specific rules for Barrier ICE
+  - [x] Blocking behavior
+  - [x] Damage taking based on attacker's power
+  - [x] Damage dealing based on own power
+- [x] Include Corp NPU cost validation
+- [x] Write tests for ICEMechanics
+  - [x] Test installation requirements
+  - [x] Test blocking determinations
+  - [x] Test damage calculations
+  - [x] Test Barrier-specific behavior
 
 ## Phase 6: Turn & Phase Implementation
 
