@@ -133,36 +133,36 @@
 ## Phase 4: User Input Handling
 
 ### Input Handler
-- [ ] Create UserAction interface for standardized actions
-- [ ] Implement InputHandler class (src/systems/InputHandler.ts)
-  - [ ] Method to capture raw keyboard input
-  - [ ] Method to parse input based on game state
-  - [ ] Handlers for number keys (1-9) for card selection
-  - [ ] Handler for space key (phase advancement)
-  - [ ] Handler for enter key (action confirmation)
-  - [ ] Handlers for h (help) and q (quit) keys
-  - [ ] Promise-based getInput() method
-- [ ] Write tests for InputHandler
-  - [ ] Mock keyboard input
-  - [ ] Test key mapping
-  - [ ] Test action translation
-  - [ ] Test invalid input handling
+- [x] Create UserAction interface for standardized actions
+- [x] Implement InputHandler class (src/systems/InputHandler.ts)
+  - [x] Method to capture raw keyboard input
+  - [x] Method to parse input based on game state
+  - [x] Handlers for number keys (1-9) for card selection
+  - [x] Handler for space key (phase advancement)
+  - [x] Handler for enter key (action confirmation)
+  - [x] Handlers for h (help) and q (quit) keys
+  - [x] Promise-based getInput() method
+- [x] Write tests for InputHandler
+  - [x] Mock keyboard input
+  - [x] Test key mapping
+  - [x] Test action translation
+  - [x] Test invalid input handling
 
 ### Action Processor
-- [ ] Implement ActionProcessor class (src/systems/ActionProcessor.ts)
-  - [ ] Method to process PlayNPU action
-  - [ ] Method to process PlayCard action
-  - [ ] Method to process Attack action
-  - [ ] Method to process EndPhase action
-  - [ ] Method to process Quit action
-  - [ ] Action validation based on game state
-- [ ] Integrate with GameStateManager
-- [ ] Implement GameError class for error handling
-- [ ] Write tests for ActionProcessor
-  - [ ] Test each action type
-  - [ ] Test validation logic
-  - [ ] Test error handling
-  - [ ] Test game rule enforcement
+- [x] Implement ActionProcessor class (src/systems/ActionProcessor.ts)
+  - [x] Method to process PlayNPU action
+  - [x] Method to process PlayCard action
+  - [x] Method to process Attack action
+  - [x] Method to process EndPhase action
+  - [x] Method to process Quit action
+  - [x] Action validation based on game state
+- [x] Integrate with GameStateManager
+- [x] Implement GameError class for error handling
+- [x] Write tests for ActionProcessor
+  - [x] Test each action type
+  - [x] Test validation logic
+  - [x] Test error handling
+  - [x] Test game rule enforcement
 
 ## Phase 5: Card Mechanics
 
