@@ -88,47 +88,47 @@
 ## Phase 3: Basic Rendering
 
 ### Terminal Utilities
-- [ ] Implement TerminalUtils functions (src/ui/TerminalUtils.ts)
-  - [ ] Function to clear terminal screen
-  - [ ] Function to set text colors (green on black)
-  - [ ] Function to position cursor
-  - [ ] Functions to draw ASCII boxes and lines
-  - [ ] Function to create screen buffer
-  - [ ] Function to render buffer to terminal
-- [ ] Create function to render title screen with ASCII art
-- [ ] Write tests for TerminalUtils
-  - [ ] Mock terminal output for testing
-  - [ ] Test all utility functions
-  - [ ] Test title screen rendering
+- [x] Implement TerminalUtils functions (src/ui/TerminalUtils.ts)
+  - [x] Function to clear terminal screen
+  - [x] Function to set text colors (green on black)
+  - [x] Function to position cursor
+  - [x] Functions to draw ASCII boxes and lines
+  - [x] Function to create screen buffer
+  - [x] Function to render buffer to terminal
+- [x] Create function to render title screen with ASCII art
+- [x] Write tests for TerminalUtils
+  - [x] Mock terminal output for testing
+  - [x] Test all utility functions
+  - [x] Test title screen rendering
 
 ### Card Renderer
-- [ ] Implement CardRenderer class (src/ui/CardRenderer.ts)
-  - [ ] Method to render Card to string array
-  - [ ] Template-based rendering following spec design
-  - [ ] Text alignment and truncation for card properties
-  - [ ] Special rendering for different card types
-- [ ] Write tests for CardRenderer
-  - [ ] Test card dimensions
-  - [ ] Test text alignment and truncation
-  - [ ] Test unique styling for each card type
-  - [ ] Test edge cases (long names, missing values)
+- [x] Implement CardRenderer class (src/ui/CardRenderer.ts)
+  - [x] Method to render Card to string array
+  - [x] Template-based rendering following spec design
+  - [x] Text alignment and truncation for card properties
+  - [x] Special rendering for different card types
+- [x] Write tests for CardRenderer
+  - [x] Test card dimensions
+  - [x] Test text alignment and truncation
+  - [x] Test unique styling for each card type
+  - [x] Test edge cases (long names, missing values)
 
 ### Basic Game Board Renderer
-- [ ] Implement GameBoardRenderer class (src/ui/GameBoardRenderer.ts)
-  - [ ] Method to render complete game state
-  - [ ] Layout with Corp at top, Runner at bottom
-  - [ ] Section for Corp core and HP display
-  - [ ] Section for Corp ICE field
-  - [ ] Section for Runner program field
-  - [ ] Display for available NPU for both sides
-  - [ ] Display for hand cards
-  - [ ] Simple event log integration
-- [ ] Use CardRenderer for individual cards
-- [ ] Write tests for GameBoardRenderer
-  - [ ] Test overall layout
-  - [ ] Test card positioning
-  - [ ] Test state information display
-  - [ ] Test event log inclusion
+- [x] Implement GameBoardRenderer class (src/ui/GameBoardRenderer.ts)
+  - [x] Method to render complete game state
+  - [x] Layout with Corp at top, Runner at bottom
+  - [x] Section for Corp core and HP display
+  - [x] Section for Corp ICE field
+  - [x] Section for Runner program field
+  - [x] Display for available NPU for both sides
+  - [x] Display for hand cards
+  - [x] Simple event log integration
+- [x] Use CardRenderer for individual cards
+- [x] Write tests for GameBoardRenderer
+  - [x] Test overall layout
+  - [x] Test card positioning
+  - [x] Test state information display
+  - [x] Test event log inclusion
 
 ## Phase 4: User Input Handling
 
