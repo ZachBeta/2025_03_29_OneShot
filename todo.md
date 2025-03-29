@@ -277,41 +277,41 @@
 ## Phase 8: UI Refinement
 
 ### Interactive Game Board
-- [ ] Implement InteractiveGameBoard class (src/ui/InteractiveGameBoard.ts)
-  - [ ] Extend GameBoardRenderer
-  - [ ] Add card highlighting
-  - [ ] Add phase indicators
-  - [ ] Add attack direction indicators
-  - [ ] Add status messages
-- [ ] Add methods for UI interactions
-  - [ ] Highlight selectable cards
-  - [ ] Display available commands
-  - [ ] Show action confirmations
-  - [ ] Provide visual feedback
-- [ ] Add refreshDisplay method
-- [ ] Write tests for InteractiveGameBoard
-  - [ ] Test highlighting
-  - [ ] Test phase indicators
-  - [ ] Test action display
-  - [ ] Test display updates
+- [x] Implement InteractiveGameBoard class (src/ui/InteractiveGameBoard.ts)
+  - [x] Extend GameBoardRenderer
+  - [x] Add card highlighting
+  - [x] Add phase indicators
+  - [x] Add attack direction indicators
+  - [x] Add status messages
+- [x] Add methods for UI interactions
+  - [x] Highlight selectable cards
+  - [x] Display available commands
+  - [x] Show action confirmations
+  - [x] Provide visual feedback
+- [x] Add refreshDisplay method
+- [x] Write tests for InteractiveGameBoard
+  - [x] Test highlighting
+  - [x] Test phase indicators
+  - [x] Test action display
+  - [x] Test display updates
 
 ### Event Log Renderer
-- [ ] Implement EventLogRenderer class (src/ui/EventLogRenderer.ts)
-  - [ ] Method to format log entries with timestamps
-  - [ ] Color coding for different event types
-  - [ ] Display of most recent N entries
-  - [ ] Automatic scrolling for new events
-- [ ] Create specialized formatters
-  - [ ] Card play event formatter
-  - [ ] Combat event formatter
-  - [ ] Phase change formatter
-  - [ ] Game state formatter
-- [ ] Integrate with main game board
-- [ ] Write tests for EventLogRenderer
-  - [ ] Test formatting
-  - [ ] Test color coding
-  - [ ] Test scrolling behavior
-  - [ ] Test event type handling
+- [x] Implement EventLogRenderer class (src/ui/EventLogRenderer.ts)
+  - [x] Method to format log entries with timestamps
+  - [x] Color coding for different event types
+  - [x] Display of most recent N entries
+  - [x] Automatic scrolling for new events
+- [x] Create specialized formatters
+  - [x] Card play event formatter
+  - [x] Combat event formatter
+  - [x] Phase change formatter
+  - [x] Game state formatter
+- [x] Integrate with main game board
+- [x] Write tests for EventLogRenderer
+  - [x] Test formatting
+  - [x] Test color coding
+  - [x] Test scrolling behavior
+  - [x] Test event type handling
 
 ## Phase 9: Game Loop Integration
 
