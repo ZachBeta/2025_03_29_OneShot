@@ -68,22 +68,39 @@ export class InputHandler {
   }
   
   /**
-   * Parses a keypress into a UserAction
+   * Parse a keypress into a UserAction
+   * @param str - The key pressed
+   * @param key - The key object
+   * @returns A UserAction based on the pressed key
    */
   private parseKeypress(str: string, key: readline.Key): UserAction | null {
-    // Check for direct mapped keys
-    if (key.name && key.name in KEY_ACTION_MAP) {
-      return {
-        type: KEY_ACTION_MAP[key.name],
-      };
+    // Check for direct mappings
+    if (key.ctrl && key.name === 'c') {
+      // Ctrl+C to exit
+      process.exit(0);
+      return null;
+    }
+    
+    // Handle special keys
+    switch (key.name) {
+      case 'q':
+        return { type: ActionType.QUIT };
+      case 'space':
+        return { type: ActionType.END_PHASE };
+      case 'h':
+        return { type: ActionType.HELP };
+      case 's':
+        return { type: ActionType.SAVE };
+      case 'l':
+        return { type: ActionType.LOAD };
     }
     
     // Check for number keys (1-9)
-    if (str && /^[1-9]$/.test(str)) {
-      const cardIndex = parseInt(str, 10) - 1; // Convert to 0-based index
-      return this.createActionFromNumber(cardIndex);
+    if (str >= '1' && str <= '9') {
+      return this.createActionFromNumber(parseInt(str, 10) - 1);
     }
     
+    // No matching key
     return null;
   }
   

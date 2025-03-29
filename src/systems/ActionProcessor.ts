@@ -64,38 +64,61 @@ export class ActionProcessor {
   /**
    * Validates that an action is allowed in the current game state
    */
-  private validateAction(action: UserAction, state: GameState): void {
-    const { activePlayer, phase, gameOver } = state;
-    
-    // Can't take actions if game is over
-    if (gameOver) {
-      throw new GameError('Game is over, no actions can be taken');
+  private validateAction(action: UserAction, gameState: GameState): void {
+    // Special handling for game state
+    if (gameState.gameOver) {
+      if (action.type === ActionType.QUIT) {
+        return; // Always allow quitting
+      }
+      throw new Error('Game is over. No further actions allowed except QUIT.');
     }
     
-    // Only RUNNER player can take actions (CORP is AI-controlled)
-    if (activePlayer !== PlayerType.RUNNER && action.type !== ActionType.HELP && action.type !== ActionType.QUIT) {
-      throw new GameError('Cannot take actions during Corp turn');
+    // Special handling for Corp turn
+    if (gameState.activePlayer === PlayerType.CORP) {
+      if (action.type === ActionType.QUIT || action.type === ActionType.HELP ||
+          action.type === ActionType.SAVE || action.type === ActionType.LOAD) {
+        return; // Always allow quitting, help, save, and load even during Corp turn
+      }
+      throw new Error('Cannot perform actions during Corp turn.');
     }
     
-    // Validate based on phase restrictions
+    // Validate action by phase
+    if (!this.isActionAllowed(action, gameState)) {
+      throw new Error(`Action ${action.type} is not allowed in the current phase.`);
+    }
+  }
+  
+  /**
+   * Check if an action is allowed in the current phase
+   * @param action The action to check
+   * @param gameState The current game state
+   * @returns True if the action is allowed
+   */
+  private isActionAllowed(action: UserAction, gameState: GameState): boolean {
+    const { phase } = gameState;
+    
+    // END_PHASE, HELP, QUIT are always allowed
+    if (action.type === ActionType.END_PHASE || 
+        action.type === ActionType.HELP || 
+        action.type === ActionType.QUIT ||
+        action.type === ActionType.SAVE ||
+        action.type === ActionType.LOAD) {
+      return true;
+    }
+    
+    // Phase-specific actions
     switch (action.type) {
       case ActionType.PLAY_NPU:
-        if (phase !== 'NPU') {
-          throw new GameError('NPU cards can only be played during NPU phase');
-        }
-        break;
-        
       case ActionType.PLAY_CARD:
-        if (phase !== 'MAIN') {
-          throw new GameError('Cards can only be played during Main phase');
-        }
-        break;
-        
+        return phase === 'MAIN';
       case ActionType.ATTACK:
-        if (phase !== 'COMBAT') {
-          throw new GameError('Attacks can only be declared during Combat phase');
-        }
-        break;
+        return phase === 'COMBAT';
+      case ActionType.BLOCK:
+        return phase === 'COMBAT' && gameState.activePlayer === PlayerType.RUNNER;
+      case ActionType.USE_ABILITY:
+        return phase === 'MAIN';
+      default:
+        return false;
     }
   }
   

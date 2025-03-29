@@ -1,0 +1,361 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "timestamp": "2025-03-29T18:06:24.514Z",
+    "turnNumber": 1,
+    "description": "Autosave - Turn 1"
+  },
+  "gameState": {
+    "turn": 1,
+    "phase": "NPU",
+    "activePlayer": "RUNNER",
+    "gameOver": false,
+    "runner": {
+      "deck": [
+        {
+          "id": "hCXv6mmuWSfcDiXLDzsOA",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "SblV2NsvF-bJD7vcFC7Z2",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "ilaVZ6oCBBUd9xRi3_v29",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "uvhADXhcQxaVZKvMYQRaH",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "2nTnGxJKpyoy87i2b9gAy",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "emWMAQHN5Xf8kUwC4CLE1",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "ibXF78x_Dbf9tbfP_zSGJ",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "aHBgA-d14h61X9LD9tu6S",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "j8fJYYxViwoAh5S1RbHPv",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "dA930thMxC9j2chsORYQM",
+          "name": "Fracter",
+          "type": "PROGRAM",
+          "programType": "FRACTER",
+          "cost": 1,
+          "power": 1,
+          "toughness": 2,
+          "ascii": [
+            "  /\\      ",
+            " /  \\     ",
+            "/____\\    ",
+            "|    |    "
+          ],
+          "flavorText": "Breaking through barriers with digital force."
+        },
+        {
+          "id": "izReCaYZLvOu1aIvTyc2M",
+          "name": "Fracter",
+          "type": "PROGRAM",
+          "programType": "FRACTER",
+          "cost": 1,
+          "power": 1,
+          "toughness": 2,
+          "ascii": [
+            "  /\\      ",
+            " /  \\     ",
+            "/____\\    ",
+            "|    |    "
+          ],
+          "flavorText": "Breaking through barriers with digital force."
+        },
+        {
+          "id": "cl18g7tbnvU1uJQtbLFD9",
+          "name": "Fracter",
+          "type": "PROGRAM",
+          "programType": "FRACTER",
+          "cost": 1,
+          "power": 1,
+          "toughness": 2,
+          "ascii": [
+            "  /\\      ",
+            " /  \\     ",
+            "/____\\    ",
+            "|    |    "
+          ],
+          "flavorText": "Breaking through barriers with digital force."
+        }
+      ],
+      "hand": [
+        {
+          "id": "fVga0_n9KAwjgPHR3ruwp",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        }
+      ],
+      "field": [],
+      "npuAvailable": 0,
+      "npuTotal": 0
+    },
+    "corp": {
+      "deck": [
+        {
+          "id": "8udXMoLdgANbDm1ImlVWY",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "hkai1WpmJjr2nqfQ-p3DH",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "Cvv06FC3GkU-FRsJtiiKt",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "f9iDNaArlp4F0qC-2bKaM",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "95trZ4Xee2cQEeJLnHzt8",
+          "name": "NPU",
+          "type": "NPU",
+          "cost": 0,
+          "ascii": [
+            "  ___[]___  ",
+            " |__   __| ",
+            "    | |    ",
+            "    |_|    "
+          ],
+          "flavorText": "Neural processing unit. The backbone of any runner's rig."
+        },
+        {
+          "id": "8uH3gHrc66DJWzPhGeQQr",
+          "name": "Barrier",
+          "type": "ICE",
+          "iceType": "BARRIER",
+          "cost": 1,
+          "power": 1,
+          "toughness": 1,
+          "ascii": [
+            " ######    ",
+            " #    #    ",
+            " #    #    ",
+            " ######    "
+          ],
+          "flavorText": "A wall between you and what you want."
+        },
+        {
+          "id": "6oTv_tG7N4RilSGBZVgHI",
+          "name": "Barrier",
+          "type": "ICE",
+          "iceType": "BARRIER",
+          "cost": 1,
+          "power": 1,
+          "toughness": 1,
+          "ascii": [
+            " ######    ",
+            " #    #    ",
+            " #    #    ",
+            " ######    "
+          ],
+          "flavorText": "A wall between you and what you want."
+        },
+        {
+          "id": "-iJAcilkHdgTYZTVnGRTs",
+          "name": "Barrier",
+          "type": "ICE",
+          "iceType": "BARRIER",
+          "cost": 1,
+          "power": 1,
+          "toughness": 1,
+          "ascii": [
+            " ######    ",
+            " #    #    ",
+            " #    #    ",
+            " ######    "
+          ],
+          "flavorText": "A wall between you and what you want."
+        }
+      ],
+      "hand": [],
+      "field": [],
+      "npuAvailable": 0,
+      "npuTotal": 0,
+      "core": {
+        "maxHp": 10,
+        "currentHp": 10
+      }
+    },
+    "eventLog": [
+      {
+        "timestamp": "2025-03-29T18:06:24.514Z",
+        "message": "Game started - Runner's turn",
+        "type": "GAME",
+        "metadata": {}
+      },
+      {
+        "timestamp": "2025-03-29T18:06:24.514Z",
+        "message": "Runner drew a card (NPU)",
+        "type": "CARD",
+        "metadata": {
+          "player": "RUNNER",
+          "cardId": "fVga0_n9KAwjgPHR3ruwp"
+        }
+      },
+      {
+        "timestamp": "2025-03-29T18:06:24.514Z",
+        "message": "RUNNER begins NPU phase",
+        "type": "PHASE",
+        "metadata": {
+          "player": "RUNNER",
+          "phase": "NPU"
+        }
+      },
+      {
+        "timestamp": "2025-03-29T18:06:24.514Z",
+        "message": "Runner refreshed NPU to 0",
+        "type": "GAME",
+        "metadata": {
+          "player": "RUNNER",
+          "npuAmount": 0
+        }
+      }
+    ]
+  }
+}

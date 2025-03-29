@@ -11,6 +11,9 @@ import { HelpSystem } from '../ui/HelpSystem';
 import { PlayerType, PhaseType, UserAction as LegacyUserAction } from '../models/types';
 import { UserAction, ActionType } from '../models/UserAction';
 import { CardType } from '../models/types';
+import { SaveSystem } from './SaveSystem';
+import { createLogEntry } from '../models/LogEntry';
+import { EventType } from '../models/types';
 
 /**
  * Manages the main game loop and coordinates all game systems
@@ -22,6 +25,7 @@ export class GameLoop {
   private gameBoard: InteractiveGameBoard;
   private eventLogRenderer: EventLogRenderer;
   private helpSystem: HelpSystem;
+  private saveSystem: SaveSystem;
   private isRunning: boolean = false;
   private exitRequested: boolean = false;
   private currentState: GameState;
@@ -44,6 +48,7 @@ export class GameLoop {
     this.gameBoard = new InteractiveGameBoard();
     this.eventLogRenderer = new EventLogRenderer();
     this.helpSystem = new HelpSystem();
+    this.saveSystem = new SaveSystem();
     // Initialize empty state
     this.currentState = {
       turn: 0,
@@ -111,6 +116,9 @@ export class GameLoop {
       // Initialize a new game
       this.currentState = this.initializeNewGame();
       
+      // Create initial autosave
+      this.createAutosave();
+      
       // Main game loop
       while (this.isRunning && !this.currentState.gameOver && !this.exitRequested) {
         // Refresh the display
@@ -124,6 +132,9 @@ export class GameLoop {
           await this.showGameOverScreen();
           break;
         }
+        
+        // Create autosave at the end of each turn
+        this.createAutosave();
       }
       
       // Clean up and exit
@@ -190,67 +201,55 @@ export class GameLoop {
   }
   
   /**
-   * Processes the Runner's turn with user input
+   * Process the Runner's turn
    */
-  private async processRunnerTurn(): Promise<void> {
-    let phaseComplete = false;
-    
-    while (!phaseComplete && !this.currentState.gameOver && !this.exitRequested) {
-      // Update available actions based on current phase
-      const availableActions = this.getAvailableActions();
-      this.showAvailableActions(availableActions);
+  async processRunnerTurn(): Promise<void> {
+    try {
+      // Set game state in input handler
+      this.inputHandler.setGameState(this.currentState);
       
-      // Get user input
-      const userAction = await this.getUserAction();
+      // Get user action
+      const userAction = await this.inputHandler.getInput();
       
-      // Handle quit action immediately
-      if (userAction?.type === ActionType.QUIT) {
+      // Process special actions first
+      if (userAction.type === ActionType.QUIT) {
         this.requestExit();
+        return;
+      } else if (userAction.type === ActionType.HELP) {
+        await this.helpSystem.showHelp(this.currentState);
+        this.gameBoard.refreshDisplay(this.currentState);
+        return;
+      } else if (userAction.type === ActionType.SAVE) {
+        const filename = this.saveGame('Manual save');
+        this.gameBoard.setStatusMessage(`Game saved as ${filename}`);
+        this.gameBoard.refreshDisplay(this.currentState);
+        return;
+      } else if (userAction.type === ActionType.LOAD) {
+        // For simplicity, load the first save file
+        const saves = this.saveSystem.listSaves();
+        if (saves.length > 0) {
+          this.loadGame(saves[0].filename);
+          this.gameBoard.setStatusMessage(`Loaded game from ${saves[0].filename}`);
+        } else {
+          this.gameBoard.setStatusMessage('No save files found');
+        }
+        this.gameBoard.refreshDisplay(this.currentState);
         return;
       }
       
-      // Handle help action
-      if (userAction?.type === ActionType.HELP) {
-        // Show help and wait for user to dismiss
-        await this.helpSystem.showHelp(this.currentState);
-        
-        // Refresh the display after help is dismissed
-        this.updateDisplay(this.currentState);
-        continue; // Skip the rest of the loop
+      // Process regular game actions
+      try {
+        this.actionProcessor.processAction(userAction);
+        this.gameBoard.refreshDisplay(this.currentState);
+      } catch (error) {
+        // Display error message
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        this.gameBoard.setStatusMessage(`Error: ${errorMessage}`);
+        this.gameBoard.refreshDisplay(this.currentState);
+        await this.delay(GameLoop.ERROR_ACK_DELAY);
       }
-      
-      // Process the action
-      if (userAction) {
-        try {
-          this.currentState = this.actionProcessor.processAction(userAction);
-          
-          // Check if phase is complete after this action
-          if (userAction.type === ActionType.END_PHASE) {
-            // Check if we need to advance to the next phase
-            if (this.currentState.phase === PhaseType.COMBAT) {
-              // End turn after combat phase
-              this.currentState = TurnManager.endTurn(this.currentState);
-              phaseComplete = true;
-            } else {
-              // Just advance to the next phase
-              this.currentState = TurnManager.advanceToNextPhase(this.currentState);
-            }
-          }
-          
-          // Update the display after each action
-          this.updateDisplay(this.currentState);
-          
-        } catch (error) {
-          // Display error message
-          this.showErrorMessage(error instanceof Error ? error.message : 'An unknown error occurred');
-          
-          // Wait for acknowledgment - simulated
-          await new Promise(resolve => setTimeout(resolve, GameLoop.ERROR_ACK_DELAY));
-          
-          // Refresh display
-          this.updateDisplay(this.currentState);
-        }
-      }
+    } catch (error) {
+      console.error('Error processing Runner turn:', error);
     }
   }
   
@@ -492,18 +491,6 @@ export class GameLoop {
   }
   
   /**
-   * Get user input via the InputHandler
-   * @returns A UserAction based on user's keyboard input
-   */
-  private async getUserAction(): Promise<UserAction> {
-    // Set the current game state in the input handler
-    this.inputHandler.setGameState(this.currentState);
-    
-    // Get user input through the input handler
-    return this.inputHandler.getInput();
-  }
-  
-  /**
    * Simple delay function
    * @param ms Milliseconds to delay
    */
@@ -521,5 +508,40 @@ export class GameLoop {
     this.isRunning = false;
     console.clear();
     console.log('Thanks for playing SLOP_RUNNER!');
+  }
+  
+  /**
+   * Save the current game state
+   * @param description Optional description for the save
+   * @returns The filename of the saved game
+   */
+  private saveGame(description?: string): string {
+    return this.saveSystem.saveGame(this.currentState, description);
+  }
+  
+  /**
+   * Load a saved game
+   * @param filename The filename to load
+   */
+  private loadGame(filename: string): void {
+    try {
+      this.currentState = this.saveSystem.loadGame(filename);
+      this.gameBoard.refreshDisplay(this.currentState);
+      this.currentState.eventLog.push(
+        createLogEntry(`Game loaded from ${filename}`, EventType.GAME)
+      );
+    } catch (error) {
+      console.error(`Error loading game: ${error instanceof Error ? error.message : String(error)}`);
+      this.gameBoard.setStatusMessage(`Error loading game: ${error instanceof Error ? error.message : String(error)}`);
+      this.gameBoard.refreshDisplay(this.currentState);
+    }
+  }
+  
+  /**
+   * Create an autosave
+   * @returns The filename of the autosave
+   */
+  private createAutosave(): string {
+    return this.saveSystem.createAutosave(this.currentState);
   }
 } 

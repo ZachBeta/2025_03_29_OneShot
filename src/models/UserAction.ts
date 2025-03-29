@@ -16,8 +16,12 @@ export enum ActionType {
   PLAY_CARD = 'PLAY_CARD',
   SELECT_CARD = 'SELECT_CARD',
   ATTACK = 'ATTACK',
+  BLOCK = 'BLOCK',
   END_PHASE = 'END_PHASE',
+  USE_ABILITY = 'USE_ABILITY',
   HELP = 'HELP',
+  SAVE = 'SAVE',
+  LOAD = 'LOAD',
   QUIT = 'QUIT',
 }
 
