@@ -46,44 +46,44 @@
 ## Phase 2: Game State Management
 
 ### Card Factory
-- [ ] Implement CardFactory utility (src/utils/CardFactory.ts)
-  - [ ] Function to create NPU cards
-  - [ ] Function to create Fracter program cards
-  - [ ] Function to create Barrier ICE cards
-  - [ ] ID generation for unique card identification
-  - [ ] ASCII art representation for each card type
-  - [ ] Flavor text for each card type
-- [ ] Implement deck generation functions
-  - [ ] Function to create Runner starter deck (10x NPU, 3x Fracter)
-  - [ ] Function to create Corp starter deck (5x NPU, 3x Barrier)
-- [ ] Write tests for CardFactory
-  - [ ] Test card property correctness
-  - [ ] Test unique ID generation
-  - [ ] Test deck composition
-  - [ ] Test deck size
+- [x] Implement CardFactory utility (src/utils/CardFactory.ts)
+  - [x] Function to create NPU cards
+  - [x] Function to create Fracter program cards
+  - [x] Function to create Barrier ICE cards
+  - [x] ID generation for unique card identification
+  - [x] ASCII art representation for each card type
+  - [x] Flavor text for each card type
+- [x] Implement deck generation functions
+  - [x] Function to create Runner starter deck (10x NPU, 3x Fracter)
+  - [x] Function to create Corp starter deck (5x NPU, 3x Barrier)
+- [x] Write tests for CardFactory
+  - [x] Test card property correctness
+  - [x] Test unique ID generation
+  - [x] Test deck composition
+  - [x] Test deck size
 
 ### Game State Manager
-- [ ] Implement GameStateManager class (src/systems/GameStateManager.ts)
-  - [ ] Constructor for initial empty state
-  - [ ] Method to initialize decks using CardFactory
-  - [ ] Method to draw cards from deck to hand
-  - [ ] Method to play cards from hand to field
-  - [ ] Method to update NPU resources
-  - [ ] Method to log events with ISO8601 timestamps
-  - [ ] Method to switch active player
-  - [ ] Method to advance to next phase
-  - [ ] Method to check win/loss conditions
-- [ ] Ensure all state changes are immutable
-- [ ] Write tests for GameStateManager
-  - [ ] Test initial state creation
-  - [ ] Test deck initialization
-  - [ ] Test drawing cards (including edge cases)
-  - [ ] Test playing cards
-  - [ ] Test NPU updates
-  - [ ] Test event logging
-  - [ ] Test player switching
-  - [ ] Test phase advancement
-  - [ ] Test win/loss condition checking
+- [x] Implement GameStateManager class (src/systems/GameStateManager.ts)
+  - [x] Constructor for initial empty state
+  - [x] Method to initialize decks using CardFactory
+  - [x] Method to draw cards from deck to hand
+  - [x] Method to play cards from hand to field
+  - [x] Method to update NPU resources
+  - [x] Method to log events with ISO8601 timestamps
+  - [x] Method to switch active player
+  - [x] Method to advance to next phase
+  - [x] Method to check win/loss conditions
+- [x] Ensure all state changes are immutable
+- [x] Write tests for GameStateManager
+  - [x] Test initial state creation
+  - [x] Test deck initialization
+  - [x] Test drawing cards (including edge cases)
+  - [x] Test playing cards
+  - [x] Test NPU updates
+  - [x] Test event logging
+  - [x] Test player switching
+  - [x] Test phase advancement
+  - [x] Test win/loss condition checking
 
 ## Phase 3: Basic Rendering
 
