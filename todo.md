@@ -203,36 +203,36 @@
 ## Phase 6: Turn & Phase Implementation
 
 ### Phase Manager
-- [ ] Implement PhaseManager class (src/systems/PhaseManager.ts)
-  - [ ] Implementation of Draw Phase
-  - [ ] Implementation of NPU Phase
-  - [ ] Implementation of Main Phase
-  - [ ] Implementation of Combat Phase (Runner only)
-  - [ ] Entry/exit logic for each phase
-  - [ ] Tracking of allowed actions per phase
-  - [ ] Method to advance to next phase
-  - [ ] Logic for Corp AI action triggers
-- [ ] Add validation for phase-appropriate actions
-- [ ] Write tests for PhaseManager
-  - [ ] Test phase transitions
-  - [ ] Test action restrictions by phase
-  - [ ] Test automatic effects
-  - [ ] Test phase differences between Runner and Corp
+- [x] Implement PhaseManager class (src/systems/PhaseManager.ts)
+  - [x] Implementation of Draw Phase
+  - [x] Implementation of NPU Phase
+  - [x] Implementation of Main Phase
+  - [x] Implementation of Combat Phase (Runner only)
+  - [x] Entry/exit logic for each phase
+  - [x] Tracking of allowed actions per phase
+  - [x] Method to advance to next phase
+  - [x] Logic for Corp AI action triggers
+- [x] Add validation for phase-appropriate actions
+- [x] Write tests for PhaseManager
+  - [x] Test phase transitions
+  - [x] Test action restrictions by phase
+  - [x] Test automatic effects
+  - [x] Test phase differences between Runner and Corp
 
 ### Turn Manager
-- [ ] Implement TurnManager class (src/systems/TurnManager.ts)
-  - [ ] Method to start new turn
-  - [ ] Method to end current turn
-  - [ ] Method to switch players
-  - [ ] Method to reset phase tracking
-  - [ ] Framework for end-of-turn effects
-- [ ] Handle Runner vs Corp turn differences
-- [ ] Implement win/loss condition checking
-- [ ] Write tests for TurnManager
-  - [ ] Test turn alternation
-  - [ ] Test player-specific differences
-  - [ ] Test state updates during turn changes
-  - [ ] Test win/loss evaluation
+- [x] Implement TurnManager class (src/systems/TurnManager.ts)
+  - [x] Method to start new turn
+  - [x] Method to end current turn
+  - [x] Method to switch players
+  - [x] Method to reset phase tracking
+  - [x] Framework for end-of-turn effects
+- [x] Handle Runner vs Corp turn differences
+- [x] Implement win/loss condition checking
+- [x] Write tests for TurnManager
+  - [x] Test turn alternation
+  - [x] Test player-specific differences
+  - [x] Test state updates during turn changes
+  - [x] Test win/loss evaluation
 
 ## Phase 7: Combat System
 
