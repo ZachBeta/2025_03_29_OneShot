@@ -55,4 +55,17 @@ export enum EventType {
   COMBAT = 'COMBAT',
   CARD = 'CARD',
   PHASE = 'PHASE'
-} 
+}
+
+/**
+ * User action types
+ */
+export type UserAction =
+  | { type: 'PlayNPU'; cardIndex: number }
+  | { type: 'PlayCard'; cardIndex: number }
+  | { type: 'Attack'; programIndex: number }
+  | { type: 'Block'; iceIndex: number }
+  | { type: 'EndPhase' }
+  | { type: 'Quit' }
+  | { type: 'Help' }
+  | { type: 'UseAbility'; cardIndex: number }; 

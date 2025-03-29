@@ -237,42 +237,42 @@
 ## Phase 7: Combat System
 
 ### Combat Resolution
-- [ ] Implement CombatResolver class (src/systems/CombatResolver.ts)
-  - [ ] Method to declare attacks
-  - [ ] Method to determine blocking ICE
-  - [ ] Method to resolve program vs ICE combat
-  - [ ] Method to calculate Corp core damage
-  - [ ] Method to process card destruction
-  - [ ] Method to clear damage at end of combat
-- [ ] Implement core combat rules
-  - [ ] One-at-a-time program attacks
-  - [ ] Corp-decided blocking
-  - [ ] Simultaneous damage
-  - [ ] Unblocked damage to Corp core
-- [ ] Add event logging for combat actions
-- [ ] Write tests for CombatResolver
-  - [ ] Test rules compliance
-  - [ ] Test damage calculation
-  - [ ] Test card destruction
-  - [ ] Test unblocked attack handling
-  - [ ] Test event logging
+- [x] Implement CombatResolver class (src/systems/CombatResolver.ts)
+  - [x] Method to declare attacks
+  - [x] Method to determine blocking ICE
+  - [x] Method to resolve program vs ICE combat
+  - [x] Method to calculate Corp core damage
+  - [x] Method to process card destruction
+  - [x] Method to clear damage at end of combat
+- [x] Implement core combat rules
+  - [x] One-at-a-time program attacks
+  - [x] Corp-decided blocking
+  - [x] Simultaneous damage
+  - [x] Unblocked damage to Corp core
+- [x] Add event logging for combat actions
+- [x] Write tests for CombatResolver
+  - [x] Test rules compliance
+  - [x] Test damage calculation
+  - [x] Test card destruction
+  - [x] Test unblocked attack handling
+  - [x] Test event logging
 
 ### Corp AI Decision Making
-- [ ] Implement CorpAI class (src/systems/CorpAI.ts)
-  - [ ] Logic for card play decisions
-  - [ ] Logic for ICE placement
-  - [ ] Logic for blocking decisions
-  - [ ] NPU prioritization algorithm
-- [ ] Implement tutorial Corp behavior
-  - [ ] Play NPU cards first
-  - [ ] Play Barrier ICE when possible
-  - [ ] Block with oldest Barrier first
-- [ ] Method to get next Corp action
-- [ ] Write tests for CorpAI
-  - [ ] Test decision consistency
-  - [ ] Test "oldest first" blocking
-  - [ ] Test NPU and ICE priorities
-  - [ ] Test resource-constrained decisions
+- [x] Implement CorpAI class (src/systems/CorpAI.ts)
+  - [x] Logic for card play decisions
+  - [x] Logic for ICE placement
+  - [x] Logic for blocking decisions
+  - [x] NPU prioritization algorithm
+- [x] Implement tutorial Corp behavior
+  - [x] Play NPU cards first
+  - [x] Play Barrier ICE when possible
+  - [x] Block with oldest Barrier first
+- [x] Method to get next Corp action
+- [x] Write tests for CorpAI
+  - [x] Test decision consistency
+  - [x] Test "oldest first" blocking
+  - [x] Test NPU and ICE priorities
+  - [x] Test resource-constrained decisions
 
 ## Phase 8: UI Refinement
 
