@@ -27,6 +27,14 @@ export class GameStateManager {
   }
 
   /**
+   * Gets the current turn number
+   * @returns The current turn number
+   */
+  getTurn(): number {
+    return this.state.turn;
+  }
+
+  /**
    * Creates an initial empty game state
    * @returns A new game state with default values
    */
