@@ -1,0 +1,219 @@
+/* Base styles */
+:root {
+    --corp-color: #2c3e50;
+    --runner-color: #27ae60;
+    --background-color: #1a1a1a;
+    --text-color: #ecf0f1;
+    --card-background: #2d2d2d;
+    --card-border: #3d3d3d;
+    --button-color: #3498db;
+    --button-hover: #2980b9;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Game container */
+#game-container {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+/* Player sections */
+#corp-section, #runner-section {
+    display: grid;
+    gap: 10px;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border: 1px solid var(--card-border);
+}
+
+#corp-section .player-info {
+    border-color: var(--corp-color);
+}
+
+#runner-section .player-info {
+    border-color: var(--runner-color);
+}
+
+/* Fields and hands */
+.field, .hand {
+    display: flex;
+    gap: 10px;
+    min-height: 160px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border: 1px solid var(--card-border);
+    overflow-x: auto;
+}
+
+/* Cards */
+.card {
+    width: 120px;
+    height: 150px;
+    background-color: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card.playable {
+    border-color: var(--runner-color);
+}
+
+.card-back {
+    background-color: var(--corp-color);
+    background-image: linear-gradient(45deg, #34495e 25%, transparent 25%),
+                      linear-gradient(-45deg, #34495e 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #34495e 75%),
+                      linear-gradient(-45deg, transparent 75%, #34495e 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+/* Game info section */
+#game-info {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border: 1px solid var(--card-border);
+}
+
+/* Action buttons */
+#action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: inherit;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+/* Event log */
+#event-log {
+    height: 150px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border: 1px solid var(--card-border);
+}
+
+.log-entry {
+    padding: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9em;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--background-color);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #game-container {
+        padding: 10px;
+    }
+
+    .card {
+        width: 100px;
+        height: 130px;
+    }
+
+    #game-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+/* Accessibility */
+button:focus,
+.card:focus {
+    outline: 2px solid var(--runner-color);
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--button-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--button-hover);
+} 

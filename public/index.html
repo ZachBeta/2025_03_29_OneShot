@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLOP_RUNNER</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Corp Section -->
+        <div id="corp-section">
+            <div class="player-info">
+                <h2>Corp</h2>
+                <div class="core-hp">Core HP: <span id="corp-hp">5/5</span></div>
+                <div class="npu">NPU: <span id="corp-npu">0/0</span></div>
+            </div>
+            <div class="field" id="corp-field"></div>
+            <div class="hand" id="corp-hand"></div>
+        </div>
+
+        <!-- Game Info Section -->
+        <div id="game-info">
+            <div class="phase">Phase: <span id="current-phase">DRAW</span></div>
+            <div class="turn">Turn: <span id="turn-number">1</span></div>
+            <div class="active-player">Active: <span id="active-player">RUNNER</span></div>
+        </div>
+
+        <!-- Runner Section -->
+        <div id="runner-section">
+            <div class="field" id="runner-field"></div>
+            <div class="hand" id="runner-hand"></div>
+            <div class="player-info">
+                <h2>Runner</h2>
+                <div class="npu">NPU: <span id="runner-npu">0/0</span></div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div id="action-buttons">
+            <button id="end-phase">End Phase</button>
+            <button id="help">Help</button>
+        </div>
+
+        <!-- Event Log -->
+        <div id="event-log"></div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Game Help</h2>
+            <div id="help-content"></div>
+            <button id="close-help">Close</button>
+        </div>
+    </div>
+
+    <script type="module" src="../dist/index.js"></script>
+</body>
+</html> 

@@ -1,6 +1,7 @@
 import { GameState } from '../models/GameState';
-import { Card, NpuCard, IceCard } from '../models/Card';
-import { PlayerType, CardType, PhaseType, UserAction } from '../models/types';
+import { NpuCard, IceCard } from '../models/Card';
+import { PlayerType, CardType, PhaseType } from '../models/types';
+import { UserAction, ActionType } from '../models/UserAction';
 import { ICEMechanics } from './ICEMechanics';
 
 /**
@@ -11,7 +12,7 @@ export class CorpAI {
    * Gets the next action for the Corp to take based on the current game state
    */
   public static getNextAction(gameState: GameState): UserAction | null {
-    const { phase, corp } = gameState;
+    const { phase } = gameState;
     
     // Corp doesn't act during Runner's Combat phase
     if (gameState.activePlayer !== PlayerType.CORP) {
@@ -27,7 +28,7 @@ export class CorpAI {
       case PhaseType.DRAW:
       case PhaseType.NPU:
         // Automatically end these phases
-        return { type: 'EndPhase' };
+        return { type: ActionType.END_PHASE };
         
       case PhaseType.MAIN:
         // Decide what to play, if anything
@@ -41,15 +42,16 @@ export class CorpAI {
   /**
    * Decides what to do during the Main phase
    */
-  private static getMainPhaseAction(gameState: GameState): UserAction | null {
-    const { corp } = gameState;
-    
+  private static getMainPhaseAction(gameState: GameState): UserAction | null {    
     // Try to play NPU cards first
     const npuCardIndex = this.findPlayableNpuCardIndex(gameState);
     if (npuCardIndex !== -1) {
       return { 
-        type: 'PlayNPU', 
-        cardIndex: npuCardIndex 
+        type: ActionType.PLAY_NPU, 
+        payload: {
+          cardIndex: npuCardIndex,
+          cardType: CardType.NPU
+        }
       };
     }
     
@@ -57,13 +59,16 @@ export class CorpAI {
     const iceCardIndex = this.findPlayableIceCardIndex(gameState);
     if (iceCardIndex !== -1) {
       return { 
-        type: 'PlayCard', 
-        cardIndex: iceCardIndex 
+        type: ActionType.PLAY_CARD, 
+        payload: {
+          cardIndex: iceCardIndex,
+          cardType: CardType.ICE
+        }
       };
     }
     
     // If nothing to play, end the phase
-    return { type: 'EndPhase' };
+    return { type: ActionType.END_PHASE };
   }
   
   /**
@@ -127,8 +132,11 @@ export class CorpAI {
     
     // Return the blocking decision
     return {
-      type: 'Block',
-      iceIndex: oldestBlockingIceIndex
+      type: ActionType.BLOCK,
+      payload: {
+        cardIndex: oldestBlockingIceIndex,
+        isOpponentCard: false
+      }
     };
   }
   
